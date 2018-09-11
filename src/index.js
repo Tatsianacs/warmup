@@ -1,3 +1,4 @@
 module.exports = function warmup(temperature) {
-  // your implementation here
+  // Celsium to Farengeit conversions
+    return (temperature*1.8 + 32);
 };
