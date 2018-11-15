@@ -67,6 +67,8 @@ search_container.append(searchBox, submit);
 let loadingIcon = document.createElement('i');
 loadingIcon.className = 'fa fa-spinner fa-spin';
 
+console.log('w' + document.documentElement.clientWidth);
+
 // no results found
 let divNoResults = document.createElement('div');
 let searchNoResults = document.createElement('h2');
@@ -120,6 +122,10 @@ const populateList = data => {
     let numberOfPages = Math.ceil(arrayOfData.length / 4);
     //let pageCount = numberOfPages > 4 ? 4 : numberOfPages;
     let videoCount = arrayOfData.length < 4 ? arrayOfData.length : 4;
+    let width =  document.documentElement.clientWidth;
+    if (width < 1000) {
+        videoCount = 1;
+    }
     for (let i = 0; i < videoCount; i++) {
       divVideoResults.appendChild(createClip(arrayOfData[i]));
 
@@ -184,8 +190,63 @@ function showClips() {
   divVideoResults.innerHTML = '';
 
   let endIndex = (arrayOfData.length - startIndex) < 4 ? arrayOfData.length : startIndex + 4;
+    let width =  document.documentElement.clientWidth;
+    if (width < 1000) {
+        endIndex = startIndex + 1;
+    }
   console.log(startIndex, endIndex);
   for (let i = startIndex; i < endIndex; i += 1) {
     divVideoResults.appendChild(createClip(arrayOfData[i]));
   }
+}
+
+
+//SWIPE
+var startX;
+var startY;
+var endX;
+var endY;
+var treshold = 100; //this sets the minimum swipe distance, to avoid noise and to filter actual swipes from just moving fingers
+
+//Function to handle swipes
+function handleTouch(start,end, cbL, cbR){
+    //calculate the distance on x-axis and o y-axis. Check wheter had the great moving ratio.
+    var xDist = endX - startX;
+    var yDist = endY - startY;
+    console.log(xDist);
+    console.log(yDist);
+    if(endX - startX < 0){
+        cbL();
+    }else{
+        cbR();
+    }
+}
+
+//writing the callback fn()
+var left = () =>{
+    document.querySelector('.main-container').style.background = '#D8335B'
+};
+var right = () =>{
+    document.querySelector('.main-container').style.background = '#2C82C9'
+};
+
+//configs the elements on load
+window.onload = function(){
+    window.addEventListener('touchstart', function(event){
+        //console.log(event);
+        startX = event.touches[0].clientX;
+        startY = event.touches[0].clientY;
+        //console.log(`the start is at X: ${startX}px and the Y is at ${startY}px`)
+
+    })
+
+    window.addEventListener('touchend', function(event){
+        //console.log(event);
+        endX = event.changedTouches[0].clientX;
+        endY = event.changedTouches[0].clientY;
+        //console.log(`the start is at X: ${endX}px and the Y is at ${endY}px`)
+
+        handleTouch(startX, endX, left, right)
+
+    })
 }
