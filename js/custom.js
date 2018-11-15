@@ -184,12 +184,15 @@ const createClip = (idx) => {
 
 function showClips() {
   console.log("CI" + currentSelectedIdx, "AL" + arrayOfData.length);
-
-  let startIndex = 4 * currentSelectedIdx;
+    let width =  document.documentElement.clientWidth;
+  let startIndex;
+    if (width < 1000) {
+        startIndex = currentSelectedIdx;
+    } else startIndex = 4 * currentSelectedIdx;
   divVideoResults.innerHTML = '';
 
   let endIndex = (arrayOfData.length - startIndex) < 4 ? arrayOfData.length : startIndex + 4;
-    let width =  document.documentElement.clientWidth;
+
     if (width < 1000) {
         endIndex = startIndex + 1;
     }
