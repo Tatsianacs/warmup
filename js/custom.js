@@ -213,13 +213,23 @@ function handleTouch(start,end, cbL, cbR){
     //calculate the distance on x-axis and o y-axis. Check wheter had the great moving ratio.
     var xDist = endX - startX;
     var yDist = endY - startY;
-    console.log(xDist);
-    console.log(yDist);
     if(endX - startX < 0){
-        cbL();
+        //cbL();
+        paginationWrapper.classList.add('transition-prev');
+        currentSelectedIdx-= 1;
+        if (currentSelectedIdx === 0) {
+            this.classList.add('disabled');
+        }
+        console.log(this);
+        showClips();
     }else{
-        cbR();
+        //cbR();
+        paginationWrapper.classList.add('transition-next');
+        currentSelectedIdx += 1;
+        showClips();
     }
+
+    var timeout = setTimeout(cleanClasses, 500);
 }
 
 //writing the callback fn()
