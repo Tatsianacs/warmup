@@ -14,7 +14,6 @@ function btnClick() {
   if(this.classList.contains('btn--prev')) {
     paginationWrapper.classList.add('transition-prev');
     currentSelectedIdx-= 1;
-    debugger
     if (currentSelectedIdx === 0) {
       this.classList.add('disabled');
     }
@@ -232,13 +231,13 @@ function handleTouch(start,end, cbL, cbR){
     var timeout = setTimeout(cleanClasses, 500);
 }
 
-//writing the callback fn()
-var left = () =>{
-    document.querySelector('.main-container').style.background = '#D8335B'
-};
-var right = () =>{
-    document.querySelector('.main-container').style.background = '#2C82C9'
-};
+// //writing the callback fn()
+// var left = () =>{
+//     document.querySelector('.main-container').style.background = '#D8335B'
+// };
+// var right = () =>{
+//     document.querySelector('.main-container').style.background = '#2C82C9'
+// };
 
 //configs the elements on load
 window.onload = function(){
