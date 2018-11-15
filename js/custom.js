@@ -1,4 +1,3 @@
-
 let currentSelectedIdx = 0;
 var btns = document.querySelectorAll('.btn');
 var paginationWrapper = document.querySelector('.pagination-wrapper');
@@ -6,18 +5,17 @@ var bigDotContainer = document.querySelector('.big-dot-container');
 var littleDot = document.querySelector('.little-dot');
 
 
-for(var i = 0; i < btns.length; i++) {
+for (var i = 0; i < btns.length; i++) {
   btns[i].addEventListener('click', btnClick);
 }
 
 function btnClick() {
-  if(this.classList.contains('btn--prev')) {
+  if (this.classList.contains('btn--prev')) {
     paginationWrapper.classList.add('transition-prev');
-    currentSelectedIdx-= 1;
+    currentSelectedIdx -= 1;
     if (currentSelectedIdx === 0) {
       this.classList.add('disabled');
     }
-    console.log(this);
     showClips();
   } else {
     paginationWrapper.classList.add('transition-next');
@@ -29,9 +27,9 @@ function btnClick() {
 }
 
 function cleanClasses() {
-  if(paginationWrapper.classList.contains('transition-next')) {
+  if (paginationWrapper.classList.contains('transition-next')) {
     paginationWrapper.classList.remove('transition-next')
-  } else if(paginationWrapper.classList.contains('transition-prev')) {
+  } else if (paginationWrapper.classList.contains('transition-prev')) {
     paginationWrapper.classList.remove('transition-prev')
   }
 }
@@ -77,7 +75,6 @@ searchSuggestion.textContent = 'Try different keywords';
 divNoResults.append(searchNoResults, searchSuggestion);
 
 
-
 let divVideoResults = document.createElement('div');
 divVideoResults.classList.add('video-results');
 
@@ -121,9 +118,9 @@ const populateList = data => {
     let numberOfPages = Math.ceil(arrayOfData.length / 4);
     //let pageCount = numberOfPages > 4 ? 4 : numberOfPages;
     let videoCount = arrayOfData.length < 4 ? arrayOfData.length : 4;
-    let width =  document.documentElement.clientWidth;
+    let width = document.documentElement.clientWidth;
     if (width < 1000) {
-        videoCount = 1;
+      videoCount = 1;
     }
     for (let i = 0; i < videoCount; i++) {
       divVideoResults.appendChild(createClip(arrayOfData[i]));
@@ -184,18 +181,18 @@ const createClip = (idx) => {
 
 function showClips() {
   console.log("CI" + currentSelectedIdx, "AL" + arrayOfData.length);
-    let width =  document.documentElement.clientWidth;
+  let width = document.documentElement.clientWidth;
   let startIndex;
-    if (width < 1000) {
-        startIndex = currentSelectedIdx;
-    } else startIndex = 4 * currentSelectedIdx;
+  if (width < 1000) {
+    startIndex = currentSelectedIdx;
+  } else startIndex = 4 * currentSelectedIdx;
   divVideoResults.innerHTML = '';
 
   let endIndex = (arrayOfData.length - startIndex) < 4 ? arrayOfData.length : startIndex + 4;
 
-    if (width < 1000) {
-        endIndex = startIndex + 1;
-    }
+  if (width < 1000) {
+    endIndex = startIndex + 1;
+  }
   console.log(startIndex, endIndex);
   for (let i = startIndex; i < endIndex; i += 1) {
     divVideoResults.appendChild(createClip(arrayOfData[i]));
@@ -205,61 +202,52 @@ function showClips() {
 
 //SWIPE
 var startX;
-var startY;
 var endX;
-var endY;
 var treshold = 100; //this sets the minimum swipe distance, to avoid noise and to filter actual swipes from just moving fingers
 
 //Function to handle swipes
-function handleTouch(start,end, cbL, cbR){
-    //calculate the distance on x-axis and o y-axis. Check wheter had the great moving ratio.
-    var xDist = endX - startX;
-    var yDist = endY - startY;
-    if(endX - startX < 0){
-        cbL();
+function handleTouch(start, end, cbL, cbR) {
+  //calculate the distance on x-axis and o y-axis. Check wheter had the great moving ratio.
+  if (Math.abs(endX - startX) > treshold) {
+    if (endX - startX < 0) {
+      cbL();
 
-    }else{
-        cbR();
+    } else {
+      cbR();
     }
+  }
 
-    var timeout = setTimeout(cleanClasses, 500);
+  var timeout = setTimeout(cleanClasses, 500);
 }
 
 //writing the callback fn()
-var left = () =>{
-    document.querySelector('.main-container').style.background = '#D8335B';
-    paginationWrapper.classList.add('transition-prev');
-    currentSelectedIdx-= 1;
-    if (currentSelectedIdx === 0) {
-        this.classList.add('disabled');
-    }
-    console.log(this);
-    showClips();
+var left = () => {
+  paginationWrapper.classList.add('transition-prev');
+  currentSelectedIdx -= 1;
+  if (currentSelectedIdx === 0) {
+    this.classList.add('disabled');
+  }
+  console.log(this);
+  showClips();
 };
-var right = () =>{
-    document.querySelector('.main-container').style.background = '#2C82C9';
-    paginationWrapper.classList.add('transition-next');
-    currentSelectedIdx += 1;
-    showClips();
+var right = () => {
+  paginationWrapper.classList.add('transition-next');
+  currentSelectedIdx += 1;
+  showClips();
 };
 
 //configs the elements on load
-window.onload = function(){
-    window.addEventListener('touchstart', function(event){
-        //console.log(event);
-        startX = event.touches[0].clientX;
-        startY = event.touches[0].clientY;
-        //console.log(`the start is at X: ${startX}px and the Y is at ${startY}px`)
 
-    });
+video_container.addEventListener('touchstart', function (event) {
+  startX = event.touches[0].clientX;
+  startY = event.touches[0].clientY;
+  //console.log(`the start is at X: ${startX}px and the Y is at ${startY}px`)
 
-    window.addEventListener('touchend', function(event){
-        //console.log(event);
-        endX = event.changedTouches[0].clientX;
-        endY = event.changedTouches[0].clientY;
-        //console.log(`the start is at X: ${endX}px and the Y is at ${endY}px`)
+});
 
-        handleTouch(startX, endX, left, right)
-
-    })
-};
+video_container.addEventListener('touchend', function (event) {
+  endX = event.changedTouches[0].clientX;
+  endY = event.changedTouches[0].clientY;
+  //console.log(`the start is at X: ${endX}px and the Y is at ${endY}px`)
+  handleTouch(startX, endX, left, right)
+});
