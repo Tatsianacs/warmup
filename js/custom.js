@@ -213,31 +213,32 @@ function handleTouch(start,end, cbL, cbR){
     var xDist = endX - startX;
     var yDist = endY - startY;
     if(endX - startX < 0){
-        //cbL();
-        paginationWrapper.classList.add('transition-prev');
-        currentSelectedIdx-= 1;
-        if (currentSelectedIdx === 0) {
-            this.classList.add('disabled');
-        }
-        console.log(this);
-        showClips();
+        cbL();
+
     }else{
-        //cbR();
-        paginationWrapper.classList.add('transition-next');
-        currentSelectedIdx += 1;
-        showClips();
+        cbR();
     }
 
     var timeout = setTimeout(cleanClasses, 500);
 }
 
-// //writing the callback fn()
-// var left = () =>{
-//     document.querySelector('.main-container').style.background = '#D8335B'
-// };
-// var right = () =>{
-//     document.querySelector('.main-container').style.background = '#2C82C9'
-// };
+//writing the callback fn()
+var left = () =>{
+    document.querySelector('.main-container').style.background = '#D8335B';
+    paginationWrapper.classList.add('transition-prev');
+    currentSelectedIdx-= 1;
+    if (currentSelectedIdx === 0) {
+        this.classList.add('disabled');
+    }
+    console.log(this);
+    showClips();
+};
+var right = () =>{
+    document.querySelector('.main-container').style.background = '#2C82C9';
+    paginationWrapper.classList.add('transition-next');
+    currentSelectedIdx += 1;
+    showClips();
+};
 
 //configs the elements on load
 window.onload = function(){
@@ -247,7 +248,7 @@ window.onload = function(){
         startY = event.touches[0].clientY;
         //console.log(`the start is at X: ${startX}px and the Y is at ${startY}px`)
 
-    })
+    });
 
     window.addEventListener('touchend', function(event){
         //console.log(event);
@@ -258,4 +259,4 @@ window.onload = function(){
         handleTouch(startX, endX, left, right)
 
     })
-}
+};
