@@ -37,11 +37,11 @@ function cleanClasses() {
   }
 }
 
-const API = "///";
+const k = "AIzaSyAdN8-ADK8taSLMpdFXguKfp9NXH4g6UtE";
 
 const baseLink = "https://www.googleapis.com/youtube/v3/search?";
 
-const keyPart = "key=" + API;
+const keyPart = "key=" + k;
 
 const filterPart = "&type=video&part=snippet&maxResults=25";
 
@@ -113,7 +113,6 @@ searchBox.onkeydown = (evt) => {
 const populateList = data => {
   // clear previous result
   video_container.innerHTML = '';
-  //divControlsForPagination.innerHTML = ''; TODO
   divVideoResults.innerHTML = '';
   arrayOfData = Array.from(data.items);
   if (arrayOfData && arrayOfData.length) {
