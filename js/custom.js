@@ -1,8 +1,38 @@
+//TODO change main container touch area
+// Loader when switching icons
+
+
+let arrowLeft = document.createElement('i');
+arrowLeft.classList.add('fa', 'fa-chevron-left', 'btn', 'btn--prev');
+let arrowRight = document.createElement('i');
+arrowRight.classList.add('fa', 'fa-chevron-right', 'btn', 'btn--next');
+
+let paginationWrapper = document.createElement('div');
+paginationWrapper.classList.add('pagination-wrapper');
+let paginationContainer = document.createElement('div');
+paginationContainer.classList.add('pagination-container');
+
+let dotLittleF = document.createElement('div');
+dotLittleF.classList.add('little-dot',  'little-dot--first');
+let divLittle = document.createElement('div');
+divLittle.classList.add('little-dot');
+let dotBigContainer = document.createElement('div');
+dotBigContainer.classList.add('big-dot-container');
+let dotBig = document.createElement('div');
+dotBig.classList.add('big-dot');
+let dotLittleL = document.createElement('div');
+dotLittleL.classList.add('little-dot',  'little-dot--last');
+
+
+
+dotBigContainer.appendChild(dotBig);
+divLittle.appendChild(dotBigContainer);
+paginationContainer.append(dotLittleF, divLittle, dotLittleL);
+paginationWrapper.append(arrowLeft, paginationContainer, arrowRight);
+document.body.appendChild(paginationWrapper);
+
+let btns = document.querySelectorAll('.btn');
 let currentSelectedIdx = 0;
-var btns = document.querySelectorAll('.btn');
-var paginationWrapper = document.querySelector('.pagination-wrapper');
-var bigDotContainer = document.querySelector('.big-dot-container');
-var littleDot = document.querySelector('.little-dot');
 
 
 for (var i = 0; i < btns.length; i++) {
@@ -23,7 +53,7 @@ function btnClick() {
     showClips();
   }
 
-  var timeout = setTimeout(cleanClasses, 500);
+  setTimeout(cleanClasses, 500);
 }
 
 function cleanClasses() {
@@ -216,12 +246,16 @@ function handleTouch(start, end, cbL, cbR) {
       cbR();
     }
   }
-
   var timeout = setTimeout(cleanClasses, 500);
 }
 
 //writing the callback fn()
 var left = () => {
+  paginationWrapper.classList.add('transition-next');
+  currentSelectedIdx += 1;
+  showClips();
+};
+var right = () => {
   paginationWrapper.classList.add('transition-prev');
   currentSelectedIdx -= 1;
   if (currentSelectedIdx === 0) {
@@ -230,24 +264,21 @@ var left = () => {
   console.log(this);
   showClips();
 };
-var right = () => {
-  paginationWrapper.classList.add('transition-next');
-  currentSelectedIdx += 1;
-  showClips();
-};
 
-//configs the elements on load
-
+// need to change sensetive area
 video_container.addEventListener('touchstart', function (event) {
   startX = event.touches[0].clientX;
-  startY = event.touches[0].clientY;
-  //console.log(`the start is at X: ${startX}px and the Y is at ${startY}px`)
 
 });
 
 video_container.addEventListener('touchend', function (event) {
   endX = event.changedTouches[0].clientX;
-  endY = event.changedTouches[0].clientY;
-  //console.log(`the start is at X: ${endX}px and the Y is at ${endY}px`)
   handleTouch(startX, endX, left, right)
 });
+
+
+window.onload = () => {
+
+
+
+};

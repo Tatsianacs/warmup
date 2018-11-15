@@ -276,3 +276,9 @@ img {
 .fa-circle {
     color: #67b735;
 }
+
+.fa-chevron-left, .fa-chevron-right {
+  font-size: 40px;
+  cursor: pointer;
+  color: white;
+}
