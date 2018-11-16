@@ -1,142 +1,137 @@
-//TODO change main container touch area
-// Loader when switching icons
+
+// let arrowLeft = document.createElement('i');
+// arrowLeft.classList.add('fa', 'fa-chevron-left', 'btn', 'btn--prev');
+// let arrowRight = document.createElement('i');
+// arrowRight.classList.add('fa', 'fa-chevron-right', 'btn', 'btn--next');
+//
+// let paginationWrapper = document.createElement('div');
+// paginationWrapper.classList.add('pagination-wrapper');
+// let paginationContainer = document.createElement('div');
+// paginationContainer.classList.add('pagination-container');
+//
+// let dotLittleF = document.createElement('div');
+// dotLittleF.classList.add('little-dot',  'little-dot--first');
+// let divLittle = document.createElement('div');
+// divLittle.classList.add('little-dot');
+// let dotBigContainer = document.createElement('div');
+// dotBigContainer.classList.add('big-dot-container');
+// let dotBig = document.createElement('div');
+// dotBig.classList.add('big-dot');
+// let dotLittleL = document.createElement('div');
+// dotLittleL.classList.add('little-dot',  'little-dot--last');
+//
+//
+//
+// dotBigContainer.appendChild(dotBig);
+// divLittle.appendChild(dotBigContainer);
+// paginationContainer.append(dotLittleF, divLittle, dotLittleL);
+// paginationWrapper.append(arrowLeft, paginationContainer, arrowRight);
+// document.body.appendChild(paginationWrapper);
+//
+// let btns = document.querySelectorAll('.btn');
 
 
-let arrowLeft = document.createElement('i');
-arrowLeft.classList.add('fa', 'fa-chevron-left', 'btn', 'btn--prev');
-let arrowRight = document.createElement('i');
-arrowRight.classList.add('fa', 'fa-chevron-right', 'btn', 'btn--next');
+// for (var i = 0; i < btns.length; i++) {
+//   btns[i].addEventListener('click', btnClick);
+// }
+//
+// function btnClick() {
+//   if (this.classList.contains('btn--prev')) {
+//     paginationWrapper.classList.add('transition-prev');
+//     currentSelectedIdx -= 1;
+//     if (currentSelectedIdx === 0) {
+//       this.classList.add('disabled');
+//     }
+//     showClips();
+//   } else {
+//     paginationWrapper.classList.add('transition-next');
+//     currentSelectedIdx += 1;
+//     showClips();
+//   }
+//
+//   setTimeout(cleanClasses, 500);
+// }
+//
+// function cleanClasses() {
+//   if (paginationWrapper.classList.contains('transition-next')) {
+//     paginationWrapper.classList.remove('transition-next')
+//   } else if (paginationWrapper.classList.contains('transition-prev')) {
+//     paginationWrapper.classList.remove('transition-prev')
+//   }
+// }
 
-let paginationWrapper = document.createElement('div');
-paginationWrapper.classList.add('pagination-wrapper');
-let paginationContainer = document.createElement('div');
-paginationContainer.classList.add('pagination-container');
-
-let dotLittleF = document.createElement('div');
-dotLittleF.classList.add('little-dot',  'little-dot--first');
-let divLittle = document.createElement('div');
-divLittle.classList.add('little-dot');
-let dotBigContainer = document.createElement('div');
-dotBigContainer.classList.add('big-dot-container');
-let dotBig = document.createElement('div');
-dotBig.classList.add('big-dot');
-let dotLittleL = document.createElement('div');
-dotLittleL.classList.add('little-dot',  'little-dot--last');
-
-
-
-dotBigContainer.appendChild(dotBig);
-divLittle.appendChild(dotBigContainer);
-paginationContainer.append(dotLittleF, divLittle, dotLittleL);
-paginationWrapper.append(arrowLeft, paginationContainer, arrowRight);
-document.body.appendChild(paginationWrapper);
-
-let btns = document.querySelectorAll('.btn');
-let currentSelectedIdx = 0;
-
-
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener('click', btnClick);
-}
-
-function btnClick() {
-  if (this.classList.contains('btn--prev')) {
-    paginationWrapper.classList.add('transition-prev');
-    currentSelectedIdx -= 1;
-    if (currentSelectedIdx === 0) {
-      this.classList.add('disabled');
-    }
-    showClips();
-  } else {
-    paginationWrapper.classList.add('transition-next');
-    currentSelectedIdx += 1;
-    showClips();
-  }
-
-  setTimeout(cleanClasses, 500);
-}
-
-function cleanClasses() {
-  if (paginationWrapper.classList.contains('transition-next')) {
-    paginationWrapper.classList.remove('transition-next')
-  } else if (paginationWrapper.classList.contains('transition-prev')) {
-    paginationWrapper.classList.remove('transition-prev')
-  }
-}
-
-const k = "AIzaSyAdN8-ADK8taSLMpdFXguKfp9NXH4g6UtE";
-
-const baseLink = "https://www.googleapis.com/youtube/v3/search?";
-
-const keyPart = "key=" + k;
-
-const filterPart = "&type=video&part=snippet&maxResults=25";
-
-const video_container = document.getElementById('videos');
-
-const search_container = document.querySelector('.search-container');
-
-let arrayOfData = [];
+// const k = "AIzaSyAdN8-ADK8taSLMpdFXguKfp9NXH4g6UtE";
+//
+// const baseLink = "https://www.googleapis.com/youtube/v3/search?";
+//
+// const keyPart = "key=" + k;
+//
+// const filterPart = "&type=video&part=snippet&maxResults=25";
+//
+// const video_container = document.getElementById('videos');
+//
+// const search_container = document.querySelector('.search-container');
+//
+// let arrayOfData = [];
+//
+//
+// let searchBox = document.createElement('input');
+// searchBox.type = 'text';
+// searchBox.classList.add('search-box');
+// searchBox.setAttribute('placeholder', 'Search...');
+//
+// let submit = document.createElement('button');
+// submit.type = 'button';
+// let searchIcon = document.createElement('i');
+// searchIcon.className = 'fa fa-search';
+// submit.appendChild(searchIcon);
+// search_container.append(searchBox, submit);
+//
+// let loadingIcon = document.createElement('i');
+// loadingIcon.className = 'fa fa-spinner fa-spin';
 
 
-let searchBox = document.createElement('input');
-searchBox.type = 'text';
-searchBox.classList.add('search-box');
-searchBox.setAttribute('placeholder', 'Search...');
-
-let submit = document.createElement('button');
-submit.type = 'button';
-let searchIcon = document.createElement('i');
-searchIcon.className = 'fa fa-search';
-submit.appendChild(searchIcon);
-search_container.append(searchBox, submit);
-
-let loadingIcon = document.createElement('i');
-loadingIcon.className = 'fa fa-spinner fa-spin';
-
-console.log('w' + document.documentElement.clientWidth);
-
-// no results found
-let divNoResults = document.createElement('div');
-let searchNoResults = document.createElement('h2');
-searchNoResults.textContent = 'No results found';
-let searchSuggestion = document.createElement('span');
-searchSuggestion.textContent = 'Try different keywords';
-divNoResults.append(searchNoResults, searchSuggestion);
+// // no results found
+// let divNoResults = document.createElement('div');
+// let searchNoResults = document.createElement('h2');
+// searchNoResults.textContent = 'No results found';
+// let searchSuggestion = document.createElement('span');
+// searchSuggestion.textContent = 'Try different keywords';
+// divNoResults.append(searchNoResults, searchSuggestion);
 
 
-let divVideoResults = document.createElement('div');
-divVideoResults.classList.add('video-results');
+// let divVideoResults = document.createElement('div');
+// divVideoResults.classList.add('video-results');
 
 
 // do search
-function doSearch() {
-  currentSelectedIdx = 0;
-  const inputData = searchBox.value.trim();
-  const queryPart = "&q=" + inputData.replace(/\s/g, '+');
-  if (inputData) {
-    video_container.appendChild(loadingIcon);
-    fetch(baseLink + keyPart + filterPart + queryPart)
-      .then(res => res.json())
-      .then(data => {
-        populateList(data);
-      })
-      .catch(err => console.log(err));
-  }
+// function doSearch() {
+//   currentSelectedIdx = 0;
+//   const inputData = searchBox.value.trim();
+//   const queryPart = "&q=" + inputData.replace(/\s/g, '+');
+//   if (inputData) {
+//     video_container.appendChild(loadingIcon);
+//     fetch(baseLink + keyPart + filterPart + queryPart)
+//       .then(res => res.json())
+//       .then(data => {
+//         populateList(data);
+//       })
+//       .catch(err => console.log(err));
+//   }
 }
 
 
 // add listener for search button
-submit.addEventListener('click', doSearch);
-
-
-searchBox.onkeydown = (evt) => {
-  const e = evt || window.event;
-  const {key} = e;
-  if (key === 'Enter') {
-    doSearch();
-  }
-};
+// submit.addEventListener('click', doSearch);
+//
+//
+// searchBox.onkeydown = (evt) => {
+//   const e = evt || window.event;
+//   const {key} = e;
+//   if (key === 'Enter') {
+//     doSearch();
+//   }
+// };
 
 const populateList = data => {
   // clear previous result
@@ -208,77 +203,77 @@ const createClip = (idx) => {
     return divFlex;
   }
 };
-
-function showClips() {
-  console.log("CI" + currentSelectedIdx, "AL" + arrayOfData.length);
-  let width = document.documentElement.clientWidth;
-  let startIndex;
-  if (width < 1000) {
-    startIndex = currentSelectedIdx;
-  } else startIndex = 4 * currentSelectedIdx;
-  divVideoResults.innerHTML = '';
-
-  let endIndex = (arrayOfData.length - startIndex) < 4 ? arrayOfData.length : startIndex + 4;
-
-  if (width < 1000) {
-    endIndex = startIndex + 1;
-  }
-  console.log(startIndex, endIndex);
-  for (let i = startIndex; i < endIndex; i += 1) {
-    divVideoResults.appendChild(createClip(arrayOfData[i]));
-  }
-}
-
-
-//SWIPE
-var startX;
-var endX;
-var treshold = 100; //this sets the minimum swipe distance, to avoid noise and to filter actual swipes from just moving fingers
-
-//Function to handle swipes
-function handleTouch(start, end, cbL, cbR) {
-  //calculate the distance on x-axis and o y-axis. Check wheter had the great moving ratio.
-  if (Math.abs(endX - startX) > treshold) {
-    if (endX - startX < 0) {
-      cbL();
-
-    } else {
-      cbR();
-    }
-  }
-  var timeout = setTimeout(cleanClasses, 500);
-}
-
-//writing the callback fn()
-var left = () => {
-  paginationWrapper.classList.add('transition-next');
-  currentSelectedIdx += 1;
-  showClips();
-};
-var right = () => {
-  paginationWrapper.classList.add('transition-prev');
-  currentSelectedIdx -= 1;
-  if (currentSelectedIdx === 0) {
-    this.classList.add('disabled');
-  }
-  console.log(this);
-  showClips();
-};
-
-// need to change sensetive area
-video_container.addEventListener('touchstart', function (event) {
-  startX = event.touches[0].clientX;
-
-});
-
-video_container.addEventListener('touchend', function (event) {
-  endX = event.changedTouches[0].clientX;
-  handleTouch(startX, endX, left, right)
-});
+//
+// function showClips() {
+//   console.log("CI" + currentSelectedIdx, "AL" + arrayOfData.length);
+//   let width = document.documentElement.clientWidth;
+//   let startIndex;
+//   if (width < 1000) {
+//     startIndex = currentSelectedIdx;
+//   } else startIndex = 4 * currentSelectedIdx;
+//   divVideoResults.innerHTML = '';
+//
+//   let endIndex = (arrayOfData.length - startIndex) < 4 ? arrayOfData.length : startIndex + 4;
+//
+//   if (width < 1000) {
+//     endIndex = startIndex + 1;
+//   }
+//   console.log(startIndex, endIndex);
+//   for (let i = startIndex; i < endIndex; i += 1) {
+//     divVideoResults.appendChild(createClip(arrayOfData[i]));
+//   }
+// }
 
 
-window.onload = () => {
-
-
-
-};
+// //SWIPE
+// var startX;
+// var endX;
+// var treshold = 100; //this sets the minimum swipe distance, to avoid noise and to filter actual swipes from just moving fingers
+//
+// //Function to handle swipes
+// function handleTouch(start, end, cbL, cbR) {
+//   //calculate the distance on x-axis and o y-axis. Check wheter had the great moving ratio.
+//   if (Math.abs(endX - startX) > treshold) {
+//     if (endX - startX < 0) {
+//       cbL();
+//
+//     } else {
+//       cbR();
+//     }
+//   }
+//   var timeout = setTimeout(cleanClasses, 500);
+// }
+//
+// //writing the callback fn()
+// var left = () => {
+//   paginationWrapper.classList.add('transition-next');
+//   currentSelectedIdx += 1;
+//   showClips();
+// };
+// var right = () => {
+//   paginationWrapper.classList.add('transition-prev');
+//   currentSelectedIdx -= 1;
+//   if (currentSelectedIdx === 0) {
+//     this.classList.add('disabled');
+//   }
+//   console.log(this);
+//   showClips();
+// };
+//
+// // need to change sensetive area
+// video_container.addEventListener('touchstart', function (event) {
+//   startX = event.touches[0].clientX;
+//
+// });
+//
+// video_container.addEventListener('touchend', function (event) {
+//   endX = event.changedTouches[0].clientX;
+//   handleTouch(startX, endX, left, right)
+// });
+//
+//
+// window.onload = () => {
+//
+//
+//
+// };

@@ -223,30 +223,30 @@ visibility: hidden;
     height: 100px;
 }
 
-.search-container {
-    text-align: center;
-}
+/*.search-container {*/
+    /*text-align: center;*/
+/*}*/
 
-.search-box {
-    width: 50%;
-    padding: 16px;
-    font-size: 21px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
+/*.search-box {*/
+    /*width: 50%;*/
+    /*padding: 16px;*/
+    /*font-size: 21px;*/
+    /*border: 1px solid #ccc;*/
+    /*border-radius: 5px;*/
+/*}*/
 
-.search-container button {
-    padding: 20px 18px;
-    background: #ddd;
-    font-size: 20px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
+/*.search-container button {*/
+    /*padding: 20px 18px;*/
+    /*background: #ddd;*/
+    /*font-size: 20px;*/
+    /*border: none;*/
+    /*cursor: pointer;*/
+    /*border-radius: 5px;*/
+/*}*/
 
-.search-container button:hover {
-    background: #ccc;
-}
+/*.search-container button:hover {*/
+    /*background: #ccc;*/
+/*}*/
 
 .fa.fa-spin {
     font-size: 50px;
