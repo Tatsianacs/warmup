@@ -1,0 +1,18 @@
+.item {
+    width: 200px;
+    background-color: green;
+    margin-right: 100px;
+    height: 200px;
+}
+
+.videos {
+    width: 9999px;
+    transition: margin-left 0.3s;
+    display: flex;
+}
+
+.gallery {
+    width: 900px;
+    overflow: hidden;
+    margin: 0 auto;
+}
