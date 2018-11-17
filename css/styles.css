@@ -8,7 +8,7 @@ body {
 }
 
 .video_item {
-  width: 200px;
+  width: 300px;
   margin-left: 50px;
   margin-right: 50px;
   height: 600px;
@@ -46,7 +46,6 @@ body {
 }
 
 .gallery {
-  width: 1200px;
   overflow: hidden;
   margin: 30px auto 0;
   text-align: center;

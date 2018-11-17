@@ -9,6 +9,9 @@
 // absolute remove
 // use calc to calc height vh
 // debounce
+// navigate by arrow keys
+// drag by mouse
+
 
 const k = "AIzaSyAdN8-ADK8taSLMpdFXguKfp9NXH4g6UtE";
 
@@ -41,8 +44,19 @@ searchIcon.className = 'fa fa-search';
 submit.appendChild(searchIcon);
 search_container.append(searchBox, submit);
 
-// Create navigation bar
+// Calculate width of gallery
+let windowWidth = document.body.offsetWidth;
+console.log(windowWidth);
+let gallery = video_container.querySelector('.gallery');
+if (windowWidth >= 1600) {
+  gallery.style.width = '1600px';
+} else if (windowWidth < 1600 && windowWidth >= 1200) {
+  gallery.style.width = '1200px';
+} else if (windowWidth < 1200 && windowWidth >= 800) {
+  gallery.style.width = '800px';
+} else gallery.style.width = '400px';
 
+// Create navigation bar
 
 let arrowLeft = document.createElement('i');
 arrowLeft.classList.add('fa', 'fa-chevron-left', 'btn', 'btn--prev');
