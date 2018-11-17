@@ -86,6 +86,10 @@ img {
   background: #ccc;
 }
 
+.text_no_results {
+  color: white;
+}
+
 /*Pagination*/
 .pagination-wrapper {
   font-size: 0;
