@@ -3,9 +3,14 @@ body {
 }
 
 /*Styles for video container*/
+.video_container {
+  position: relative;
+}
+
 .video_item {
   width: 200px;
-  margin-right: 100px;
+  margin-left: 50px;
+  margin-right: 50px;
   height: 600px;
   background-color: #ffffff;
   box-sizing: border-box;
@@ -53,8 +58,7 @@ img {
 }
 
 .clip-preview {
-  width: 150px;
-  height: 100px;
+  width: 100%;
 }
 
 /*Styles for search box*/
@@ -87,9 +91,8 @@ img {
 .pagination-wrapper {
   font-size: 0;
   position: absolute;
-  top: 90%;
+  top: 110%;
   left: 50%;
-  /*  transform: translate(-50%, -50%); */
   text-align: center;
 }
 

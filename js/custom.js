@@ -5,6 +5,10 @@
 //TODO how left and right work, sensetive area
 //MORE info in populate data
 //Width and number of results
+//transfom: scale
+// absolute remove
+// use calc to calc height vh
+// debounce
 
 const k = "AIzaSyAdN8-ADK8taSLMpdFXguKfp9NXH4g6UtE";
 
@@ -97,6 +101,7 @@ const populateList = data => {
    video_container.removeChild(loadingIcon);
    list.innerHTML = '';
   arrayOfData = Array.from(data.items);
+  console.log(arrayOfData);
   if (arrayOfData && arrayOfData.length) {
     for (let i = 0; i < arrayOfData.length; i++) {
       list.appendChild(createClip(arrayOfData[i]));
