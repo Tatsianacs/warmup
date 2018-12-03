@@ -51,7 +51,6 @@ export default class AppView {
     videos.classList.add('videos');
     gallery.appendChild(videos);
     videoContainer.appendChild(gallery);
-    // Create a search box
     const searchBox = document.createElement('input');
     searchBox.type = 'text';
     searchBox.classList.add('search-box');
