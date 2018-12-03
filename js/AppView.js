@@ -72,7 +72,7 @@ export default class AppView {
   }
 
   drawPagination() {
-    // Create navigation bar
+    // Create navigation bar with buttons
     const arrowLeft = document.createElement('i');
     arrowLeft.classList.add('fa', 'fa-chevron-left', 'btn', 'btn--prev');
     const arrowRight = document.createElement('i');
