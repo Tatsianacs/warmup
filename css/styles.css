@@ -1,5 +1,6 @@
 body {
   background: #C4DFE6;
+  min-width: 450px;
 }
 
 /*Styles for video container*/

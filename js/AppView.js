@@ -45,12 +45,23 @@ export default class AppView {
     const videoContainer = document.createElement('section');
     videoContainer.classList.add('video-container');
     videoContainer.setAttribute('id', 'video_container');
+    const h1 = document.createElement('h1');
+    const logo = document.createElement('img');
+    h1.classList.add('youtube-logo');
+    logo.src = 'img/youtube-logo.png';
+    logo.setAttribute('alt', 'Youtube search client');
+    const linkToYoutube = document.createElement('a');
+    linkToYoutube.setAttribute('target', '_blank');
+    linkToYoutube.setAttribute('href', 'https://www.youtube.com');
+    linkToYoutube.appendChild(logo);
+    h1.appendChild(linkToYoutube);
     const gallery = document.createElement('div');
     gallery.classList.add('gallery');
     const videos = document.createElement('div');
     videos.classList.add('videos');
     gallery.appendChild(videos);
     videoContainer.appendChild(gallery);
+    // Create a search box
     const searchBox = document.createElement('input');
     searchBox.type = 'text';
     searchBox.classList.add('search-box');
@@ -61,6 +72,12 @@ export default class AppView {
     const searchIcon = document.createElement('i');
     searchIcon.className = 'fa fa-search';
     submit.appendChild(searchIcon);
+    const windowWidth = window.innerWidth
+      || document.body.offsetWidth
+      || document.body.clientWidth;
+    if (windowWidth > 800) {
+      sectionSearch.appendChild(h1);
+    }
     sectionSearch.append(searchBox, submit);
     container.append(sectionSearch, videoContainer);
     document.body.insertBefore(container, document.body.firstChild);
@@ -72,7 +89,7 @@ export default class AppView {
   }
 
   drawPagination() {
-    // Create navigation bar with buttons
+    // Create navigation bar
     const arrowLeft = document.createElement('i');
     arrowLeft.classList.add('fa', 'fa-chevron-left', 'btn', 'btn--prev');
     const arrowRight = document.createElement('i');
