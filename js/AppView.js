@@ -45,16 +45,6 @@ export default class AppView {
     const videoContainer = document.createElement('section');
     videoContainer.classList.add('video-container');
     videoContainer.setAttribute('id', 'video_container');
-    const h1 = document.createElement('h1');
-    const logo = document.createElement('img');
-    h1.classList.add('youtube-logo');
-    logo.src = 'img/youtube-logo.png';
-    logo.setAttribute('alt', 'Youtube search client');
-    const linkToYoutube = document.createElement('a');
-    linkToYoutube.setAttribute('target', '_blank');
-    linkToYoutube.setAttribute('href', 'https://www.youtube.com');
-    linkToYoutube.appendChild(logo);
-    h1.appendChild(linkToYoutube);
     const gallery = document.createElement('div');
     gallery.classList.add('gallery');
     const videos = document.createElement('div');
@@ -72,7 +62,7 @@ export default class AppView {
     const searchIcon = document.createElement('i');
     searchIcon.className = 'fa fa-search';
     submit.appendChild(searchIcon);
-    sectionSearch.append(h1, searchBox, submit);
+    sectionSearch.append(searchBox, submit);
     container.append(sectionSearch, videoContainer);
     document.body.insertBefore(container, document.body.firstChild);
     if (AppView.isTouchDevice()) {
